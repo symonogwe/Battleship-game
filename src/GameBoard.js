@@ -25,6 +25,11 @@ class GameBoard {
     const end = coordinates[1];
 
     const targetRow = this.gameBoard[start];
+    const targetStartIndex = targetRow.slice(end);
+
+    if (length > targetStartIndex.length) {
+      return "Invalid Move";
+    }
 
     for (let i = end; i <= length; i++) {
       targetRow[i] = warShip;
