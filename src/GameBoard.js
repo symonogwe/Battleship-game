@@ -37,6 +37,22 @@ class GameBoard {
 
     return this.gameBoard;
   }
+
+  placeShipVertically(coordinates, length) {
+    const warShip = new Ship(length);
+
+    let start = coordinates[1];
+    const end = coordinates[0];
+
+    let times = 0;
+    while (times < length) {
+      this.gameBoard[start][end] = warShip;
+      start++;
+      times++;
+    }
+
+    return this.gameBoard;
+  }
 }
 
 export default GameBoard;
