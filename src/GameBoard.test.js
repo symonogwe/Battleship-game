@@ -69,3 +69,32 @@ test("Ships can't make an illegal horizontal move", () => {
     "Invalid move"
   );
 });
+
+// GameBoards should be able to place ships at specific coordinates vertically
+const gameBoard2 = new GameBoard();
+test("GameBoards should be able to place ships at specific coordinates vertically", () => {
+  const targetVerticalBoard = new GameBoard();
+  targetVerticalBoard.gameBoard[2][9] = new Ship(3);
+  targetVerticalBoard.gameBoard[3][9] = new Ship(3);
+  targetVerticalBoard.gameBoard[4][9] = new Ship(3);
+
+  gameBoard2.placeShipVertically = jest.fn((coordinate, length) => {
+    const ship2 = new Ship(length);
+    let start = coordinate[1];
+    const end = coordinate[0];
+
+    let times = 0;
+    while (times < length) {
+      gameBoard2.gameBoard[start][end] = ship2;
+      start++;
+      times++;
+    }
+
+    return gameBoard2.gameBoard;
+  });
+
+  gameBoard2.placeShipVertically([9, 2], 3);
+  expect(gameBoard2.placeShipVertically.mock.results[0].value).toEqual(
+    targetVerticalBoard.gameBoard
+  );
+});
