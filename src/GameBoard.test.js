@@ -15,8 +15,8 @@ test("tests whether our gameBoard objects have a (10 * 10) gameBoard property", 
   expect(gameBoard1).toHaveProperty("gameBoard", boardArray);
 });
 
-// GameBoards should be able to place ships at specific coordinates vertically
-test("GameBoards should be able to place ships at specific coordinates vertically", () => {
+// GameBoards should be able to place ships at specific coordinates horizontally
+test("GameBoards should be able to place ships at specific coordinates horizontally", () => {
   const targetBoard = new GameBoard();
   targetBoard.gameBoard[4][1] = new Ship(5);
   targetBoard.gameBoard[4][2] = new Ship(5);
@@ -24,7 +24,7 @@ test("GameBoards should be able to place ships at specific coordinates verticall
   targetBoard.gameBoard[4][4] = new Ship(5);
   targetBoard.gameBoard[4][5] = new Ship(5);
 
-  gameBoard1.placeShip = jest.fn((coordinate, length) => {
+  gameBoard1.placeShipHorizontally = jest.fn((coordinate, length) => {
     const ship1 = new Ship(length);
     const start = coordinate[0];
     const end = coordinate[1];
@@ -37,15 +37,15 @@ test("GameBoards should be able to place ships at specific coordinates verticall
     gameBoard1.gameBoard[start] = arr;
     return gameBoard1.gameBoard;
   });
-  gameBoard1.placeShip([4, 1], 5);
+  gameBoard1.placeShipHorizontally([4, 1], 5);
 
-  expect(gameBoard1.placeShip.mock.results[0].value).toEqual(
+  expect(gameBoard1.placeShipHorizontally.mock.results[0].value).toEqual(
     targetBoard.gameBoard
   );
 });
 
-test("Ships can't make an illegal vertical move", () => {
-  gameBoard1.placeShip = jest.fn((coordinate, length) => {
+test("Ships can't make an illegal horizontal move", () => {
+  gameBoard1.placeShipHorizontally = jest.fn((coordinate, length) => {
     const ship1 = new Ship(length);
     const start = coordinate[0];
     const end = coordinate[1];
@@ -64,6 +64,8 @@ test("Ships can't make an illegal vertical move", () => {
     return gameBoard1.gameBoard;
   });
 
-  gameBoard1.placeShip([3, 6], 5);
-  expect(gameBoard1.placeShip.mock.results[0].value).toBe("Invalid move");
+  gameBoard1.placeShipHorizontally([3, 6], 5);
+  expect(gameBoard1.placeShipHorizontally.mock.results[0].value).toBe(
+    "Invalid move"
+  );
 });

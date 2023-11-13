@@ -18,7 +18,7 @@ class GameBoard {
     this.gameBoard = this.#createGameBoard();
   }
 
-  placeShip(coordinates, length) {
+  placeShipHorizontally(coordinates, length) {
     const warShip = new Ship(length);
 
     const start = coordinates[0];
