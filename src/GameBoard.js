@@ -22,7 +22,7 @@ class GameBoard {
     const warShip = new Ship(length);
 
     const start = coordinates[0];
-    const end = coordinates[1];
+    let end = coordinates[1];
 
     const targetRow = this.gameBoard[start];
     const targetStartIndex = targetRow.slice(end);
@@ -31,8 +31,11 @@ class GameBoard {
       return "Invalid Move";
     }
 
-    for (let i = end; i <= length; i++) {
-      targetRow[i] = warShip;
+    let times = 0;
+    while (times < length) {
+      targetRow[end] = warShip;
+      times++;
+      end++;
     }
 
     return this.gameBoard;

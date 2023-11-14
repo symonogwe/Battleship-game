@@ -27,11 +27,14 @@ test("GameBoards should be able to place ships at specific coordinates horizonta
   gameBoard1.placeShipHorizontally = jest.fn((coordinate, length) => {
     const ship1 = new Ship(length);
     const start = coordinate[0];
-    const end = coordinate[1];
+    let end = coordinate[1];
     const arr = gameBoard1.gameBoard[start];
 
-    for (let i = end; i <= length; i++) {
-      arr[i] = ship1;
+    let times = 0;
+    while (times < length) {
+      arr[end] = ship1;
+      times++;
+      end++;
     }
 
     gameBoard1.gameBoard[start] = arr;
@@ -48,7 +51,7 @@ test("Ships can't make an illegal horizontal move", () => {
   gameBoard1.placeShipHorizontally = jest.fn((coordinate, length) => {
     const ship1 = new Ship(length);
     const start = coordinate[0];
-    const end = coordinate[1];
+    let end = coordinate[1];
     const arr = gameBoard1.gameBoard[start];
     const targetStartIndex = arr.slice(end);
 
@@ -56,8 +59,11 @@ test("Ships can't make an illegal horizontal move", () => {
       return "Invalid move";
     }
 
-    for (let i = end; i <= length; i++) {
-      arr[i] = ship1;
+    let times = 0;
+    while (times < length) {
+      arr[end] = ship1;
+      times++;
+      end++;
     }
 
     gameBoard1.gameBoard[start] = arr;
@@ -69,6 +75,44 @@ test("Ships can't make an illegal horizontal move", () => {
     "Invalid move"
   );
 });
+
+// // GameBoard shouldn't place ship on another ship
+// const gameBoard3 = new GameBoard();
+// test("GameBoard shouldn't place ship on another ship", () => {
+//   const target1 = new GameBoard();
+//   target1.gameBoard[2][3] = new Ship(3);
+//   target1.gameBoard[2][4] = new Ship(3);
+//   target1.gameBoard[2][5] = new Ship(3);
+
+//   gameBoard3.placeShipHorizontally = jest.fn((coordinate, length) => {
+//     const ship1 = new Ship(length);
+//     const start = coordinate[0];
+//     const end = coordinate[1];
+//     const arr = gameBoard3.gameBoard[start];
+//     const targetStartIndex = arr.slice(end);
+
+//     if (length > targetStartIndex.length) {
+//       return "Invalid move";
+//     }
+
+//     for (let i = end; i <= length; i++) {
+//       if (arr[i] !== 0) return "Can't place ship on another ship";
+//     }
+
+//     for (let i = end; i <= length; i++) {
+//       arr[i] = ship1;
+//     }
+
+//     // gameBoard3.gameBoard[start] = arr;
+//     gameBoard3.gameBoard[start] = arr.map((i) => i);
+//     return gameBoard3.gameBoard;
+//   });
+//   gameBoard3.placeShipHorizontally([2, 3], 3);
+//   gameBoard3.placeShipHorizontally([2, 1], 3);
+//   expect(gameBoard3.placeShipHorizontally.mock.results[0].value).toEqual(
+//     target1.gameBoard
+//   );
+// });
 
 // GameBoards should be able to place ships at specific coordinates vertically
 const gameBoard2 = new GameBoard();
