@@ -68,9 +68,13 @@ class GameBoard {
 
     return this.gameBoard;
   }
+  receiveAttack(coordinates) {
+    const coordinateChange = receiveAttackUtility.call(this, coordinates);
+    return coordinateChange;
+  }
 }
 
-// Utility GameBoard functions
+// GAME-BOARD UTILITY FUNCTIONS
 //  PlaceShipHorizontally Utility functions
 function checkIfShipExistsHorizontal(targetRow, coordinates, length) {
   let checkShipTimes = 0;
@@ -120,10 +124,41 @@ function placeShipVertically(coordinates, length) {
   }
 }
 
+// Receive Attack Utility functions
+function receiveAttackUtility(coordinates) {
+  const start = coordinates[0];
+  const end = coordinates[1];
+
+  if (this.gameBoard[start][end] === 0) {
+    this.gameBoard[start][end] = 1;
+    return 1;
+  }
+  if (this.gameBoard[start][end] === 1) return 1;
+  if (
+    typeof this.gameBoard[start][end] === "object" &&
+    this.gameBoard[start][end] instanceof Ship
+  ) {
+    let shipObj = this.gameBoard[start][end];
+    shipObj.hit();
+    this.gameBoard[start][end] = "hit";
+    return "hit";
+  }
+  if (this.gameBoard[start][end] === "hit") {
+    return "hit";
+  }
+}
+
 const g1 = new GameBoard();
-console.log(g1.placeShipHorizontally([2, 3], 5));
-console.log(g1.placeShipVertically([1, 7], 3));
-console.log(g1.placeShipHorizontally([7, 0], 4));
-console.log(g1.placeShipVertically([4, 0], 5));
-console.log(g1.placeShipVertically([8, 9], 4));
+console.log(g1.placeShipVertically([1, 1], 2));
+console.log(g1.placeShipHorizontally([2, 3], 4));
+
+console.log(g1.receiveAttack([0, 6]));
+console.log(g1.receiveAttack([2, 5]));
+console.log(g1.receiveAttack([2, 6]));
+console.log(g1.receiveAttack([1, 1]));
+console.log(g1.receiveAttack([3, 5]));
+console.log(g1.receiveAttack([2, 5]));
+console.log(g1.receiveAttack([5, 9]));
+console.log(g1.receiveAttack([0, 6]));
+
 export default GameBoard;
