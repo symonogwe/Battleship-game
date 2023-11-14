@@ -57,17 +57,6 @@ class GameBoard {
       return "Invalid move";
     }
 
-    // check if ship exists in position
-    // let checkShipTimes = 0;
-    // let checkShipStart = coordinates[1];
-
-    // while (checkShipTimes < length) {
-    //   let position = this.gameBoard[checkShipStart][end];
-    //   if (position !== 0) return "Can't place ship on another ship";
-    //   checkShipTimes++;
-    //   checkShipStart++;
-    // }
-
     const shipExists = checkIfShipExistsVertical.call(
       this,
       coordinates,
@@ -75,13 +64,6 @@ class GameBoard {
     );
     if (shipExists) return shipExists;
 
-    // place ship vertically
-    // let times = 0;
-    // while (times < length) {
-    //   this.gameBoard[start][end] = warShip;
-    //   start++;
-    //   times++;
-    // }
     placeShipVertically.call(this, coordinates, length);
 
     return this.gameBoard;
