@@ -247,7 +247,7 @@ test("Receive attack function sends hit to correct ship or records coordinates",
       gameBoard5.gameBoard[start][end] = 1;
       return 1;
     }
-    if (gameBoard5.gameBoard[start][end] === 1) return;
+    if (gameBoard5.gameBoard[start][end] === 1) return 1;
     if (
       typeof gameBoard5.gameBoard[start][end] === "object" &&
       gameBoard5.gameBoard[start][end] instanceof Ship
@@ -268,6 +268,7 @@ test("Receive attack function sends hit to correct ship or records coordinates",
   gameBoard5.receiveAttack([3, 6]);
   gameBoard5.receiveAttack([9, 6]);
   gameBoard5.receiveAttack([3, 6]);
+  gameBoard5.receiveAttack([9, 6]);
 
   expect(gameBoard5.receiveAttack.mock.results[0].value).toEqual(1);
   expect(gameBoard5.receiveAttack.mock.results[1].value).toBe("hit");
@@ -276,4 +277,5 @@ test("Receive attack function sends hit to correct ship or records coordinates",
   expect(gameBoard5.receiveAttack.mock.results[4].value).toBe("hit");
   expect(gameBoard5.receiveAttack.mock.results[5].value).toBe(1);
   expect(gameBoard5.receiveAttack.mock.results[6].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[7].value).toBe(1);
 });
