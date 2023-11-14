@@ -89,10 +89,11 @@ function checkIfShipExistsHorizontal(targetRow, coordinates, length) {
 }
 
 function placeShipHorizontally(target, coordinates, length) {
+  const warShip = new Ship(length);
   let times = 0;
   let end = coordinates[1];
   while (times < length) {
-    target[end] = new Ship(length);
+    target[end] = warShip;
     times++;
     end++;
   }
@@ -113,12 +114,13 @@ function checkIfShipExistsVertical(coordinates, length) {
 }
 
 function placeShipVertically(coordinates, length) {
+  const warShip = new Ship(length);
   let times = 0;
   let start = coordinates[1];
   const end = coordinates[0];
 
   while (times < length) {
-    this.gameBoard[start][end] = new Ship(length);
+    this.gameBoard[start][end] = warShip;
     start++;
     times++;
   }
@@ -139,6 +141,7 @@ function receiveAttackUtility(coordinates) {
     this.gameBoard[start][end] instanceof Ship
   ) {
     let shipObj = this.gameBoard[start][end];
+    console.log(shipObj);
     shipObj.hit();
     this.gameBoard[start][end] = "hit";
     return "hit";
@@ -149,16 +152,5 @@ function receiveAttackUtility(coordinates) {
 }
 
 const g1 = new GameBoard();
-console.log(g1.placeShipVertically([1, 1], 2));
-console.log(g1.placeShipHorizontally([2, 3], 4));
-
-console.log(g1.receiveAttack([0, 6]));
-console.log(g1.receiveAttack([2, 5]));
-console.log(g1.receiveAttack([2, 6]));
-console.log(g1.receiveAttack([1, 1]));
-console.log(g1.receiveAttack([3, 5]));
-console.log(g1.receiveAttack([2, 5]));
-console.log(g1.receiveAttack([5, 9]));
-console.log(g1.receiveAttack([0, 6]));
 
 export default GameBoard;
