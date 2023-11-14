@@ -40,9 +40,15 @@ class GameBoard {
 
   placeShipVertically(coordinates, length) {
     const warShip = new Ship(length);
-
     let start = coordinates[1];
     const end = coordinates[0];
+
+    const totalColumnItems = 10;
+    const selectedColumnItems = totalColumnItems - start;
+
+    if (selectedColumnItems < length) {
+      return "Invalid move";
+    }
 
     let times = 0;
     while (times < length) {
