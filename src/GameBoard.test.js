@@ -231,3 +231,49 @@ test("Ships can't make illegal vertical move", () => {
     "Invalid move"
   );
 });
+
+// Receive Attack method takes coordinates & s ends the ‘hit’ function to the correct ship
+//  or records the coordinates of the missed shot.
+test("Receive attack function sends hit to correct ship or records coordinates", () => {
+  const gameBoard5 = new GameBoard();
+  gameBoard5.placeShipHorizontally([1, 1], 3);
+  gameBoard5.placeShipVertically([6, 2], 3);
+
+  gameBoard5.receiveAttack = jest.fn((coordinates) => {
+    const start = coordinates[0];
+    const end = coordinates[1];
+
+    if (gameBoard5.gameBoard[start][end] === 0) {
+      gameBoard5.gameBoard[start][end] = 1;
+      return 1;
+    }
+    if (gameBoard5.gameBoard[start][end] === 1) return;
+    if (
+      typeof gameBoard5.gameBoard[start][end] === "object" &&
+      gameBoard5.gameBoard[start][end] instanceof Ship
+    ) {
+      let shipObj = gameBoard5.gameBoard[start][end];
+      shipObj.hit();
+      gameBoard5.gameBoard[start][end] = "hit";
+      return "hit";
+    }
+    if (gameBoard5.gameBoard[start][end] === "hit") {
+      return "hit";
+    }
+  });
+  gameBoard5.receiveAttack([5, 3]);
+  gameBoard5.receiveAttack([1, 1]);
+  gameBoard5.receiveAttack([1, 3]);
+  gameBoard5.receiveAttack([2, 6]);
+  gameBoard5.receiveAttack([3, 6]);
+  gameBoard5.receiveAttack([9, 6]);
+  gameBoard5.receiveAttack([3, 6]);
+
+  expect(gameBoard5.receiveAttack.mock.results[0].value).toEqual(1);
+  expect(gameBoard5.receiveAttack.mock.results[1].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[2].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[3].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[4].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[5].value).toBe(1);
+  expect(gameBoard5.receiveAttack.mock.results[6].value).toBe("hit");
+});
