@@ -76,9 +76,9 @@ test("Ships can't make an illegal horizontal move", () => {
   );
 });
 
-// // GameBoard shouldn't place ship on another ship
+// GameBoard shouldn't place ship on another ship
 const gameBoard3 = new GameBoard();
-test("GameBoard shouldn't place ship on another ship", () => {
+test("GameBoard shouldn't place ship on another ship horizontally", () => {
   const target1 = new GameBoard();
   target1.gameBoard[2][3] = new Ship(3);
   target1.gameBoard[2][4] = new Ship(3);
@@ -124,6 +124,52 @@ test("GameBoard shouldn't place ship on another ship", () => {
     "Can't place ship on another ship"
   );
   expect(gameBoard3.placeShipHorizontally.mock.results[2].value).toBe(
+    "Can't place ship on another ship"
+  );
+});
+const gameBoard4 = new GameBoard();
+test("GameBoard shouldn't place ship on another ship horizontally", () => {
+  const target3 = new GameBoard();
+  target3.gameBoard[1][1] = new Ship(2);
+  target3.gameBoard[2][1] = new Ship(2);
+
+  gameBoard4.placeShipVertically = jest.fn((coordinate, length) => {
+    const ship2 = new Ship(length);
+    let start = coordinate[1];
+    const end = coordinate[0];
+
+    const totalColumnItems = 10;
+    const selectedColumnItems = totalColumnItems - start;
+
+    if (selectedColumnItems < length) {
+      return "Invalid move";
+    }
+
+    let checkTimes = 0;
+    let checkStart = coordinate[1];
+
+    while (checkTimes < length) {
+      let position = gameBoard4.gameBoard[checkStart][end];
+      if (position !== 0) return "Can't place ship on another ship";
+      checkTimes++;
+      checkStart++;
+    }
+
+    let times = 0;
+    while (times < length) {
+      gameBoard4.gameBoard[start][end] = ship2;
+      start++;
+      times++;
+    }
+
+    return gameBoard4.gameBoard;
+  });
+  gameBoard4.placeShipVertically([1, 1], 2);
+  gameBoard4.placeShipVertically([1, 0], 2);
+  expect(gameBoard4.placeShipVertically.mock.results[0].value).toEqual(
+    target3.gameBoard
+  );
+  expect(gameBoard4.placeShipVertically.mock.results[1].value).toBe(
     "Can't place ship on another ship"
   );
 });
