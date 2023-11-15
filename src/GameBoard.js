@@ -62,6 +62,7 @@ class GameBoard {
       return "Invalid move";
     }
 
+    // checks if ship exists in position
     const shipExists = checkIfShipExistsVertical.call(
       this,
       coordinates,
@@ -69,6 +70,7 @@ class GameBoard {
     );
     if (shipExists) return shipExists;
 
+    // places ship vertically
     placeShipVertically.call(this, coordinates, length);
 
     return this.gameBoard;
@@ -89,6 +91,7 @@ class GameBoard {
       times++;
     }
 
+    // checks if total hits === totalShipsLength
     if (hits === this.#totalShipsLength) return true;
     return false;
   }
@@ -174,28 +177,5 @@ function receiveAttackUtility(coordinates) {
     return "hit";
   }
 }
-
-const g1 = new GameBoard();
-console.log(g1.placeShipHorizontally([1, 1], 3));
-console.log(g1.placeShipHorizontally([3, 4], 5));
-
-console.log(g1.placeShipVertically([4, 5], 4));
-console.log(g1.placeShipVertically([9, 5], 2));
-
-console.log(g1.receiveAttack([1, 2]));
-console.log(g1.receiveAttack([3, 4]));
-console.log(g1.receiveAttack([1, 1]));
-console.log(g1.receiveAttack([1, 3]));
-console.log(g1.receiveAttack([3, 5]));
-console.log(g1.receiveAttack([5, 4]));
-console.log(g1.receiveAttack([5, 9]));
-console.log(g1.receiveAttack([6, 9]));
-console.log(g1.receiveAttack([8, 4]));
-console.log(g1.receiveAttack([7, 4]));
-console.log(g1.receiveAttack([3, 6]));
-console.log(g1.receiveAttack([3, 7]));
-console.log(g1.receiveAttack([3, 8]));
-console.log(g1.receiveAttack([3, 9]));
-console.log(g1.receiveAttack([6, 4]));
 
 export default GameBoard;
