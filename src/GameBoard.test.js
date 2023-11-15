@@ -234,10 +234,29 @@ test("Ships can't make illegal vertical move", () => {
 
 // Receive Attack method takes coordinates & s ends the ‘hit’ function to the correct ship
 //  or records the coordinates of the missed shot.
-test("Receive attack function sends hit to correct ship or records coordinates", () => {
+test("Receive attack function sends hit to correct ship or records coordinates & checks if all sinks sunk", () => {
   const gameBoard5 = new GameBoard();
   gameBoard5.placeShipHorizontally([1, 1], 3);
-  gameBoard5.placeShipVertically([6, 2], 3);
+  gameBoard5.placeShipHorizontally([3, 4], 5);
+
+  gameBoard5.placeShipVertically([4, 5], 4);
+  gameBoard5.placeShipVertically([9, 5], 2);
+
+  gameBoard5.checkIfAllSunk = jest.fn(() => {
+    let times = 0;
+    let hits = 0;
+
+    while (times < 10) {
+      let arr = gameBoard5.gameBoard[times];
+      arr.forEach((item) => {
+        if (item === "hit") hits++;
+      });
+      times++;
+    }
+
+    if (hits === 14) return true;
+    return false;
+  });
 
   gameBoard5.receiveAttack = jest.fn((coordinates) => {
     const start = coordinates[0];
@@ -254,28 +273,49 @@ test("Receive attack function sends hit to correct ship or records coordinates",
     ) {
       let shipObj = gameBoard5.gameBoard[start][end];
       shipObj.hit();
+
       gameBoard5.gameBoard[start][end] = "hit";
+      const allSunk = gameBoard5.checkIfAllSunk();
+
+      if (allSunk) return "All Sunk";
+
       return "hit";
     }
     if (gameBoard5.gameBoard[start][end] === "hit") {
       return "hit";
     }
   });
-  gameBoard5.receiveAttack([5, 3]);
+  gameBoard5.receiveAttack([1, 2]);
+  gameBoard5.receiveAttack([3, 4]);
   gameBoard5.receiveAttack([1, 1]);
   gameBoard5.receiveAttack([1, 3]);
-  gameBoard5.receiveAttack([2, 6]);
+  gameBoard5.receiveAttack([3, 5]);
+  gameBoard5.receiveAttack([5, 4]);
+  gameBoard5.receiveAttack([5, 9]);
+  gameBoard5.receiveAttack([6, 9]);
+  gameBoard5.receiveAttack([8, 4]);
+  gameBoard5.receiveAttack([7, 4]);
   gameBoard5.receiveAttack([3, 6]);
-  gameBoard5.receiveAttack([9, 6]);
-  gameBoard5.receiveAttack([3, 6]);
-  gameBoard5.receiveAttack([9, 6]);
+  gameBoard5.receiveAttack([3, 7]);
+  gameBoard5.receiveAttack([3, 8]);
+  gameBoard5.receiveAttack([3, 9]);
+  gameBoard5.receiveAttack([6, 4]);
 
-  expect(gameBoard5.receiveAttack.mock.results[0].value).toEqual(1);
+  // expect(gameBoard5.allSunk.mock.results[0].value).toBe(false);
+
+  expect(gameBoard5.receiveAttack.mock.results[0].value).toBe("hit");
   expect(gameBoard5.receiveAttack.mock.results[1].value).toBe("hit");
   expect(gameBoard5.receiveAttack.mock.results[2].value).toBe("hit");
   expect(gameBoard5.receiveAttack.mock.results[3].value).toBe("hit");
   expect(gameBoard5.receiveAttack.mock.results[4].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[5].value).toBe(1);
+  expect(gameBoard5.receiveAttack.mock.results[5].value).toBe("hit");
   expect(gameBoard5.receiveAttack.mock.results[6].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[7].value).toBe(1);
+  expect(gameBoard5.receiveAttack.mock.results[7].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[8].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[9].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[10].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[11].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[12].value).toBe("hit");
+  expect(gameBoard5.receiveAttack.mock.results[13].value).toBe(1);
+  expect(gameBoard5.receiveAttack.mock.results[14].value).toBe("All Sunk");
 });
