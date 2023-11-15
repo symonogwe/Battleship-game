@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1700040681703" clover="3.2.0">
+  <project timestamp="1700040681704" name="All files">
+    <metrics statements="99" coveredstatements="92" conditionals="30" coveredconditionals="16" methods="16" coveredmethods="15" elements="145" coveredelements="123" complexity="0" loc="99" ncloc="99" packages="1" files="3" classes="3"/>
+    <file name="GameBoard.js" path="/home/user/repos/Battleship-game/src/GameBoard.js">
+      <metrics statements="89" coveredstatements="84" conditionals="28" coveredconditionals="16" methods="11" coveredmethods="11"/>
+      <line num="7" count="14" type="stmt"/>
+      <line num="8" count="14" type="stmt"/>
+      <line num="9" count="14" type="stmt"/>
+      <line num="11" count="14" type="stmt"/>
+      <line num="12" count="140" type="stmt"/>
+      <line num="13" count="140" type="stmt"/>
+      <line num="16" count="14" type="stmt"/>
+      <line num="19" count="14" type="stmt"/>
+      <line num="20" count="14" type="stmt"/>
+      <line num="24" count="8" type="stmt"/>
+      <line num="25" count="8" type="stmt"/>
+      <line num="27" count="8" type="stmt"/>
+      <line num="28" count="8" type="stmt"/>
+      <line num="30" count="8" type="stmt"/>
+      <line num="31" count="8" type="stmt"/>
+      <line num="33" count="8" type="cond" truecount="1" falsecount="1"/>
+      <line num="34" count="0" type="stmt"/>
+      <line num="37" count="8" type="stmt"/>
+      <line num="43" count="8" type="cond" truecount="1" falsecount="1"/>
+      <line num="46" count="8" type="stmt"/>
+      <line num="48" count="8" type="stmt"/>
+      <line num="52" count="8" type="stmt"/>
+      <line num="53" count="8" type="stmt"/>
+      <line num="55" count="8" type="stmt"/>
+      <line num="56" count="8" type="stmt"/>
+      <line num="58" count="8" type="stmt"/>
+      <line num="59" count="8" type="stmt"/>
+      <line num="61" count="8" type="cond" truecount="1" falsecount="1"/>
+      <line num="62" count="0" type="stmt"/>
+      <line num="66" count="8" type="stmt"/>
+      <line num="71" count="8" type="cond" truecount="1" falsecount="1"/>
+      <line num="74" count="8" type="stmt"/>
+      <line num="76" count="8" type="stmt"/>
+      <line num="79" count="8" type="stmt"/>
+      <line num="80" count="8" type="stmt"/>
+      <line num="83" count="4" type="stmt"/>
+      <line num="84" count="4" type="stmt"/>
+      <line num="86" count="4" type="stmt"/>
+      <line num="87" count="40" type="stmt"/>
+      <line num="88" count="40" type="stmt"/>
+      <line num="89" count="400" type="cond" truecount="2" falsecount="0"/>
+      <line num="91" count="40" type="stmt"/>
+      <line num="95" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="96" count="4" type="stmt"/>
+      <line num="103" count="8" type="stmt"/>
+      <line num="104" count="8" type="stmt"/>
+      <line num="106" count="8" type="stmt"/>
+      <line num="107" count="32" type="cond" truecount="1" falsecount="1"/>
+      <line num="108" count="0" type="stmt"/>
+      <line num="109" count="32" type="stmt"/>
+      <line num="110" count="32" type="stmt"/>
+      <line num="115" count="8" type="stmt"/>
+      <line num="116" count="8" type="stmt"/>
+      <line num="117" count="8" type="stmt"/>
+      <line num="118" count="8" type="stmt"/>
+      <line num="119" count="32" type="stmt"/>
+      <line num="120" count="32" type="stmt"/>
+      <line num="121" count="32" type="stmt"/>
+      <line num="127" count="8" type="stmt"/>
+      <line num="128" count="8" type="stmt"/>
+      <line num="129" count="8" type="stmt"/>
+      <line num="131" count="8" type="stmt"/>
+      <line num="132" count="24" type="stmt"/>
+      <line num="133" count="24" type="cond" truecount="1" falsecount="1"/>
+      <line num="134" count="24" type="stmt"/>
+      <line num="135" count="24" type="stmt"/>
+      <line num="140" count="8" type="stmt"/>
+      <line num="141" count="8" type="stmt"/>
+      <line num="142" count="8" type="stmt"/>
+      <line num="143" count="8" type="stmt"/>
+      <line num="145" count="8" type="stmt"/>
+      <line num="146" count="24" type="stmt"/>
+      <line num="147" count="24" type="stmt"/>
+      <line num="148" count="24" type="stmt"/>
+      <line num="154" count="8" type="stmt"/>
+      <line num="155" count="8" type="stmt"/>
+      <line num="157" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="158" count="4" type="stmt"/>
+      <line num="159" count="4" type="stmt"/>
+      <line num="161" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="162" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="166" count="4" type="stmt"/>
+      <line num="167" count="4" type="stmt"/>
+      <line num="169" count="4" type="stmt"/>
+      <line num="170" count="4" type="stmt"/>
+      <line num="172" count="4" type="cond" truecount="1" falsecount="1"/>
+      <line num="174" count="4" type="stmt"/>
+      <line num="176" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="177" count="0" type="stmt"/>
+    </file>
+    <file name="Player.js" path="/home/user/repos/Battleship-game/src/Player.js">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <line num="5" count="4" type="stmt"/>
+      <line num="6" count="4" type="stmt"/>
+      <line num="7" count="4" type="stmt"/>
+      <line num="11" count="8" type="stmt"/>
+    </file>
+    <file name="Ship.js" path="/home/user/repos/Battleship-game/src/Ship.js">
+      <metrics statements="6" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <line num="4" count="57" type="stmt"/>
+      <line num="5" count="57" type="stmt"/>
+      <line num="6" count="57" type="stmt"/>
+      <line num="9" count="18" type="stmt"/>
+      <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="13" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>
