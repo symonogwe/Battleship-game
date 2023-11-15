@@ -2,6 +2,7 @@ import Ship from "./Ship";
 
 // GameBoard class
 class GameBoard {
+  #totalShipsLength;
   #createGameBoard() {
     const gameBoardArr = [];
     const rows = 10;
@@ -15,11 +16,13 @@ class GameBoard {
     return gameBoardArr;
   }
   constructor() {
+    this.#totalShipsLength = 0;
     this.gameBoard = this.#createGameBoard();
   }
 
   placeShipHorizontally(coordinates, length) {
     const warShip = new Ship(length);
+    this.#totalShipsLength += length;
 
     const start = coordinates[0];
     let end = coordinates[1];
@@ -47,6 +50,8 @@ class GameBoard {
 
   placeShipVertically(coordinates, length) {
     const warShip = new Ship(length);
+    this.#totalShipsLength += length;
+
     let start = coordinates[1];
     const end = coordinates[0];
 
@@ -71,6 +76,21 @@ class GameBoard {
   receiveAttack(coordinates) {
     const coordinateChange = receiveAttackUtility.call(this, coordinates);
     return coordinateChange;
+  }
+  allSunk() {
+    let times = 0;
+    let hits = 0;
+
+    while (times < 10) {
+      let arr = this.gameBoard[times];
+      arr.forEach((item) => {
+        if (item === "hit") hits++;
+      });
+      times++;
+    }
+
+    if (hits === this.#totalShipsLength) return true;
+    return false;
   }
 }
 
@@ -141,9 +161,13 @@ function receiveAttackUtility(coordinates) {
     this.gameBoard[start][end] instanceof Ship
   ) {
     let shipObj = this.gameBoard[start][end];
-    console.log(shipObj);
     shipObj.hit();
+
     this.gameBoard[start][end] = "hit";
+    const allSunk = this.allSunk();
+
+    if (allSunk) return "All Sunk";
+
     return "hit";
   }
   if (this.gameBoard[start][end] === "hit") {
@@ -152,5 +176,26 @@ function receiveAttackUtility(coordinates) {
 }
 
 const g1 = new GameBoard();
+console.log(g1.placeShipHorizontally([1, 1], 3));
+console.log(g1.placeShipHorizontally([3, 4], 5));
+
+console.log(g1.placeShipVertically([4, 5], 4));
+console.log(g1.placeShipVertically([9, 5], 2));
+
+console.log(g1.receiveAttack([1, 2]));
+console.log(g1.receiveAttack([3, 4]));
+console.log(g1.receiveAttack([1, 1]));
+console.log(g1.receiveAttack([1, 3]));
+console.log(g1.receiveAttack([3, 5]));
+console.log(g1.receiveAttack([5, 4]));
+console.log(g1.receiveAttack([5, 9]));
+console.log(g1.receiveAttack([6, 9]));
+console.log(g1.receiveAttack([8, 4]));
+console.log(g1.receiveAttack([7, 4]));
+console.log(g1.receiveAttack([3, 6]));
+console.log(g1.receiveAttack([3, 7]));
+console.log(g1.receiveAttack([3, 8]));
+console.log(g1.receiveAttack([3, 9]));
+console.log(g1.receiveAttack([6, 4]));
 
 export default GameBoard;
