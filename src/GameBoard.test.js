@@ -319,3 +319,15 @@ test("Receive attack function sends hit to correct ship or records coordinates &
   expect(gameBoard5.receiveAttack.mock.results[13].value).toBe(1);
   expect(gameBoard5.receiveAttack.mock.results[14].value).toBe("All Sunk");
 });
+
+describe("Placing ship should increment totalShipsLength Property", () => {
+  test("Placing Ship increments player1 totalLength property", () => {
+    const gameBoard6 = new GameBoard();
+
+    gameBoard6.placeShipHorizontally([3, 4], 5);
+    gameBoard6.placeShipHorizontally([1, 1], 3);
+    gameBoard6.placeShipVertically([4, 5], 4);
+
+    expect(gameBoard6.totalShipLength).toBe(12);
+  });
+});
