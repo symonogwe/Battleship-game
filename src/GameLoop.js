@@ -22,7 +22,27 @@ class GameLoop {
       return this.currentPlayer.name;
     }
   }
+
+  currentPlayerTurn(coordinates) {
+    const result = this.currentPlayer.playRound(coordinates);
+    let message = null;
+
+    if (result === 1) {
+      message = `${this.currentPlayer.name} missed ${this.currentPlayer.enemy.name}'s ship`;
+      this.switchPlayerTurn();
+      return message;
+    }
+    if (result === "hit") {
+      message = `${this.currentPlayer.name} hit ${this.currentPlayer.enemy.name}'s ship`;
+      this.switchPlayerTurn();
+      return message;
+    }
+    if (result === "All Sunk") {
+      // this.gameOver()
+      return `${this.currentPlayer.name} sunk all of ${this.currentPlayer.enemy.name}'s ships`;
+    }
+  }
 }
 
 const mainGameLoop = new GameLoop();
-export default mainGameLoop;
+export { GameLoop, mainGameLoop };
