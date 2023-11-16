@@ -2,7 +2,6 @@ import Ship from "./Ship";
 
 // GameBoard class
 class GameBoard {
-  #totalShipsLength;
   #createGameBoard() {
     const gameBoardArr = [];
     const rows = 10;
@@ -16,13 +15,13 @@ class GameBoard {
     return gameBoardArr;
   }
   constructor() {
-    this.#totalShipsLength = 0;
+    this.totalShipLength = 0;
     this.gameBoard = this.#createGameBoard();
   }
 
   placeShipHorizontally(coordinates, length) {
     const warShip = new Ship(length);
-    this.#totalShipsLength += length;
+    this.totalShipLength += length;
 
     const start = coordinates[0];
     let end = coordinates[1];
@@ -50,7 +49,7 @@ class GameBoard {
 
   placeShipVertically(coordinates, length) {
     const warShip = new Ship(length);
-    this.#totalShipsLength += length;
+    this.totalShipLength += length;
 
     let start = coordinates[1];
     const end = coordinates[0];
@@ -91,8 +90,8 @@ class GameBoard {
       times++;
     }
 
-    // checks if total hits === totalShipsLength
-    if (hits === this.#totalShipsLength) return true;
+    // checks if total hits ===totalShipLength
+    if (hits === this.totalShipLength) return true;
     return false;
   }
 }
