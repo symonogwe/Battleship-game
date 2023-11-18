@@ -1,9 +1,10 @@
 import Player from "./Player";
+import { computerAi } from "./Player";
 
 class GameLoop {
   constructor() {
     this.player1 = new Player("symon");
-    this.player2 = new Player("computer");
+    this.player2 = computerAi;
     this.playerArray = [this.player1, this.player2];
     this.currentPlayer = this.playerArray[0];
   }
