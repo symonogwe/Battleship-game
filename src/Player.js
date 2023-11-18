@@ -12,4 +12,27 @@ class Player {
   }
 }
 
+// COMPUTER LOGIC IMPLEMENTATION
+const validCoordinatePlays = [];
+
+for (let i = 0; i < 10; i++) {
+  for (let j = 0; j < 10; j++) {
+    const row = [i, j];
+    validCoordinatePlays.push(row);
+  }
+}
+
+const computerAi = new Player("Computer");
+computerAi.validPlayRoundMoves = validCoordinatePlays;
+
+computerAi.playRound = function () {
+  const randomPosition = Math.floor(Math.random() * 100);
+  const randomCoordinate = this.validPlayRoundMoves[randomPosition];
+
+  if (this.enemy) {
+    return this.enemy.board.receiveAttack(randomCoordinate);
+  }
+};
+
 export default Player;
+export { computerAi };
