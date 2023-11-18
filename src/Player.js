@@ -27,12 +27,17 @@ computerAi.validPlayRoundMoves = validCoordinatePlays;
 
 computerAi.playRound = function () {
   const randomPosition = Math.floor(Math.random() * 100);
-  const randomCoordinate = this.validPlayRoundMoves[randomPosition];
+  const randomCoordinate = this.validPlayRoundMoves.splice(
+    randomPosition,
+    1
+  )[0];
 
   if (this.enemy) {
     return this.enemy.board.receiveAttack(randomCoordinate);
   }
 };
+
+computerAi.playRound();
 
 export default Player;
 export { computerAi };
