@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Volkhov&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Secular+One&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Aleo&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@700&display=swap");
+
+:root {
+  --base-color: #1d2d44;
+  --sub-base-color: #3e5c76;
+  --sub-color: #0d1321;
+  --text-color: #f0ebd8;
+  --base-p-fs: calc(0.8rem + 0.7vw);
+  --base-h1-fs: calc(2rem + 2vw);
+  --base-h2-fs: calc(1rem + 0.8vw);
+  --base-h3-fs: calc(1.2rem + 1vw);
+  --base-h1-ff: "Secular One", sans-serif;
+  --base-h2-ff: "Assistant", sans-serif;
+  --base-p-ff: "Volkhov", sans-serif;
+  --logo-width: max(35px, 30%);
+  --base-paragraph-ff: "Nanum Myeongjo", sans-serif;
+  --base-margin: 0.2em 0.6em;
+  --base-padding: 0.4em 0.6em;
+  --box-shadow: 5px 10px 30px black;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+}
+
+/* PLAYER 1 INPUT STYLES */
+.player1-name-input {
+  /* border: 1px solid red; */
+  background-color: var(--sub-color);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  padding: var(--base-padding);
+}
+
+.player1-name-input label {
+  font-size: var(--base-h2-fs);
+  font-family: var(--base-h2-ff);
+  color: var(--text-color);
+}
+
+.player1-name-input input {
+  font-size: var(--base-p-fs);
+  font-family: var(--base-p-ff);
+  border-radius: 0.5em;
+  border: none;
+  padding-left: 0.4em;
+}
+
+.player1-name-input input:focus {
+  outline: none;
+}
+
+.player1-name-input input:valid {
+  outline: 2.5px solid green;
+}
+
+.player1-name-input input:invalid {
+  outline: 2.5px solid red;
+}
+
+.player1-btn {
+  background-color: var(--sub-base-color);
+  color: var(--text-color);
+  border: none;
+  padding: 0.4em 2em;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.player1-btn:hover {
+  scale: 1.1;
+  transition: 0.2s;
+}
