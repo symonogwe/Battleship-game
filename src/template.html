@@ -6,10 +6,48 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <!-- PLAYER1 INPUT FORM -->
     <form class="player1-name-input">
       <label for="player1-name">Enter Player1 name</label>
       <input type="text" id="player1-name" required />
       <button class="player1-btn" type="button">Submit</button>
     </form>
+    <!-- PLACE PLAYER1 SHIP -->
+    <div class="place-player-1-ships">
+      <div class="player-1-empty-board"></div>
+      <div class="ship-coordinates">
+        <p class="invalid-move-p"></p>
+        <div class="length-5 coordinate-div">
+          <input type="text" id="length-5" placeholder="5, 6" />
+          <button class="vertical-5">Place Vertically</button>
+          <button class="horizontal-5">Place Horizontally</button>
+        </div>
+        <div class="length-4 coordinate-div">
+          <input type="text" id="length-4" />
+          <button class="vertical-4">Place Vertically</button>
+          <button class="horizontal-4">Place Horizontally</button>
+        </div>
+        <div class="length-3a coordinate-div">
+          <input type="text" id="length-3a" />
+          <button class="vertical-3a">Place Vertically</button>
+          <button class="horizontal-3a">Place Horizontally</button>
+        </div>
+        <div class="length-3b coordinate-div">
+          <input type="text" id="length-3b" />
+          <button class="vertical-3b">Place Vertically</button>
+          <button class="horizontal-3b">Place Horizontally</button>
+        </div>
+        <div class="length-2 coordinate-div">
+          <input type="text" id="length-2" />
+          <button class="vertical-2">Place Vertically</button>
+          <button class="horizontal-2">Place Horizontally</button>
+        </div>
+      </div>
+    </div>
+    <!-- GAME-CONTAINER BOARDS -->
+    <div class="game-container">
+      <div class="player-1-board"></div>
+      <div class="player-2-board"></div>
+    </div>
   </body>
 </html>
