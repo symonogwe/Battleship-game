@@ -27,6 +27,40 @@ class ScreenUpdater {
     const player1Board = this.mainGame.player1.board.gameBoard;
     renderEmptyPlayer1Board(player1Board);
   }
+
+  renderPlacingPlayer1Board() {
+    const placingBoard = document.querySelector(".player-1-empty-board");
+    placingBoard.textContent = "";
+    const board = this.mainGame.player1.board.gameBoard;
+
+    for (let i = 0; i < board.length; i++) {
+      const row = board[i];
+
+      for (let j = 0; j < row.length; j++) {
+        const cell = row[j];
+
+        const cellDiv = document.createElement("div");
+        cellDiv.classList.add("cell-div");
+
+        cellDiv.dataset.x = i;
+        cellDiv.dataset.y = j;
+
+        if (typeof cell === "object") {
+          // cellDiv.style.backgroundColor = "green";
+          cellDiv.textContent = "ship";
+        }
+
+        cellDiv.addEventListener("mouseover", () => {
+          hoverPlaceHorizontally(cellDiv, 5);
+        });
+        cellDiv.addEventListener("mouseout", () => {
+          hoverMouseOut(cellDiv);
+        });
+
+        placingBoard.appendChild(cellDiv);
+      }
+    }
+  }
 }
 
 // SCREEN UPDATER OBJECT
@@ -62,7 +96,7 @@ function renderEmptyPlayer1Board(board) {
       cellDiv.dataset.y = j;
 
       cellDiv.addEventListener("mouseover", () => {
-        hoverPlaceHorizontally(cellDiv, 3);
+        hoverPlaceHorizontally(cellDiv, 5);
       });
       cellDiv.addEventListener("mouseout", () => {
         hoverMouseOut(cellDiv);
@@ -73,6 +107,7 @@ function renderEmptyPlayer1Board(board) {
   }
 }
 
+// mouseOver function
 let validTarget;
 function hoverPlaceHorizontally(cell, length) {
   const coordinates = [cell.dataset.x, cell.dataset.y];
@@ -91,7 +126,7 @@ function hoverPlaceHorizontally(cell, length) {
   const targetCoordinates = coordinatesArr.map((arr) => [+arr[0], +arr[1]]);
   validTarget = targetCoordinates.filter((arr) => arr[1] < 10);
 
-  console.log(validTarget);
+  // console.log(validTarget);
 
   const allCellDivs = document.querySelectorAll(".cell-div");
   allCellDivs.forEach((item) => {
@@ -103,10 +138,24 @@ function hoverPlaceHorizontally(cell, length) {
           item.style.backgroundColor = "green";
         }
       }
+
+      if (JSON.stringify(validTarget[0]) === JSON.stringify(target)) {
+        item.addEventListener("click", () => {
+          placeHorizontally(target, length);
+        });
+      }
     }
   });
 }
 
+// place ship horizontally click Event function
+function placeHorizontally(coordinates, length) {
+  screenUpdater.mainGame.player1.board.placeShipHorizontally(coordinates, 5);
+  screenUpdater.renderPlacingPlayer1Board();
+  // console.log(screenUpdater.mainGame.player1.board);
+}
+
+// mouseOut function
 function hoverMouseOut(cell) {
   const targetCell = [+cell.dataset.x, +cell.dataset.y];
 
@@ -120,6 +169,12 @@ function hoverMouseOut(cell) {
       if (JSON.stringify(validTarget[i]) === JSON.stringify(target)) {
         item.style.backgroundColor = "#1d2d44";
       }
+    }
+
+    if (JSON.stringify(validTarget[0]) === JSON.stringify(target)) {
+      item.removeEventListener("click", () => {
+        placeHorizontally(target, length);
+      });
     }
   });
 }
