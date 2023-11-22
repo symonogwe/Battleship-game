@@ -57,16 +57,69 @@ function renderEmptyPlayer1Board(board) {
       const cell = row[j];
       const cellDiv = document.createElement("div");
       cellDiv.classList.add("cell-div");
-      // const cellP = document.createElement("p");
-      // cellP.classList.add("cell-p");
-      // cellP.textContent = `${i}, ${j}`;
-      // cellDiv.append(cellP);
-      // cellDiv.textContent = `${i}, ${j}`;
 
       cellDiv.dataset.x = i;
       cellDiv.dataset.y = j;
 
+      cellDiv.addEventListener("mouseover", () => {
+        hoverPlaceHorizontally(cellDiv, 3);
+      });
+      cellDiv.addEventListener("mouseout", () => {
+        hoverMouseOut(cellDiv);
+      });
+
       startingBoard.appendChild(cellDiv);
     }
   }
+}
+
+let validTarget;
+function hoverPlaceHorizontally(cell, length) {
+  const coordinates = [cell.dataset.x, cell.dataset.y];
+
+  const coordinatesArr = [];
+  let times = 0;
+  let start = coordinates[0];
+  let end = coordinates[1];
+
+  while (times < length) {
+    coordinatesArr.push([start, end]);
+    end++;
+    times++;
+  }
+
+  const targetCoordinates = coordinatesArr.map((arr) => [+arr[0], +arr[1]]);
+  validTarget = targetCoordinates.filter((arr) => arr[1] < 10);
+
+  console.log(validTarget);
+
+  const allCellDivs = document.querySelectorAll(".cell-div");
+  allCellDivs.forEach((item) => {
+    let target = [+item.dataset.x, +item.dataset.y];
+
+    if (validTarget.length === length) {
+      for (let i = 0; i < validTarget.length; i++) {
+        if (JSON.stringify(validTarget[i]) === JSON.stringify(target)) {
+          item.style.backgroundColor = "green";
+        }
+      }
+    }
+  });
+}
+
+function hoverMouseOut(cell) {
+  const targetCell = [+cell.dataset.x, +cell.dataset.y];
+
+  cell.style.backgroundColor = "#1d2d44";
+
+  const allCellDivs = document.querySelectorAll(".cell-div");
+  allCellDivs.forEach((item) => {
+    let target = [+item.dataset.x, +item.dataset.y];
+
+    for (let i = 0; i < validTarget.length; i++) {
+      if (JSON.stringify(validTarget[i]) === JSON.stringify(target)) {
+        item.style.backgroundColor = "#1d2d44";
+      }
+    }
+  });
 }
