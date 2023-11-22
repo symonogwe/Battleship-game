@@ -107,26 +107,3 @@ body {
 .cell-div {
   background-color: var(--base-color);
 }
-
-.x-coords {
-  position: absolute;
-  top: 2%;
-  height: 40dvh;
-  display: grid;
-}
-
-.y-coords {
-  margin-left: 1.5em;
-  margin-top: 0.3em;
-  width: 28vw;
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
-  justify-items: center;
-}
-
-.ship-coordinates {
-  height: 60%;
-  display: grid;
-  justify-items: center;
-  background-color: var(--base-color);
-}
