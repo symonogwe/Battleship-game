@@ -36,7 +36,6 @@ body {
 
 /* PLAYER 1 INPUT STYLES */
 .player1-name-input {
-  /* border: 1px solid red; */
   background-color: var(--sub-color);
   display: grid;
   justify-items: center;
@@ -83,4 +82,51 @@ body {
 .player1-btn:hover {
   scale: 1.1;
   transition: 0.2s;
+}
+
+/* PLACE PLAYER1 SHIPS STYLES */
+.place-player-1-ships {
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: 2fr 1.5fr;
+  align-items: center;
+  padding: var(--base-padding);
+}
+
+.player-1-empty-board {
+  width: 30vw;
+  height: 40dvh;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 0.1fr);
+  gap: 1px;
+  padding-left: 1.5em;
+  position: relative;
+}
+
+.cell-div {
+  background-color: var(--base-color);
+}
+
+.x-coords {
+  position: absolute;
+  top: 2%;
+  height: 40dvh;
+  display: grid;
+}
+
+.y-coords {
+  margin-left: 1.5em;
+  margin-top: 0.3em;
+  width: 28vw;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-items: center;
+}
+
+.ship-coordinates {
+  height: 60%;
+  display: grid;
+  justify-items: center;
+  background-color: var(--base-color);
 }
