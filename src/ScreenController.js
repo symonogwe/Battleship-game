@@ -6,7 +6,10 @@ import {
   clearFormInput,
   mouseOverPlaceHorizontally,
   mouseOutPlaceHorizontally,
+  deleteAllChildren,
 } from "./DomModule";
+
+import shipImg from "./Assets/ship.svg";
 
 class ScreenController {
   constructor() {
@@ -27,7 +30,7 @@ class ScreenController {
 
   renderStartingPlayer1Board() {
     const placingBoard = document.querySelector(".player-1-empty-board");
-    placingBoard.textContent = "";
+    deleteAllChildren(placingBoard);
     const board = this.mainGame.player1.board.gameBoard;
 
     for (let i = 0; i < board.length; i++) {
@@ -43,7 +46,14 @@ class ScreenController {
         cellDiv.dataset.y = j;
 
         if (typeof cell === "object") {
-          cellDiv.style.backgroundColor = "orange";
+          // cellDiv.style.backgroundColor = "orange";
+          // cellDiv.textContent = "SHIP";
+
+          const warShip = document.createElement("img");
+          warShip.src = shipImg;
+          warShip.classList.add("war-ship-img");
+
+          cellDiv.appendChild(warShip);
         }
 
         cellDiv.addEventListener("mouseover", () => {

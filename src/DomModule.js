@@ -109,9 +109,17 @@ function mouseOutPlaceHorizontally(cell) {
   validHorizontalTarget = [];
 }
 
+// Delete allChildren of element
+function deleteAllChildren(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
 export {
   getPlayer1Name,
   clearFormInput,
   mouseOverPlaceHorizontally,
   mouseOutPlaceHorizontally,
+  deleteAllChildren,
 };
