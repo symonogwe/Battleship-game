@@ -21,7 +21,6 @@ class GameBoard {
 
   placeShipHorizontally(coordinates, length) {
     const warShip = new Ship(length);
-    this.totalShipLength += length;
 
     const start = coordinates[0];
     let end = coordinates[1];
@@ -49,7 +48,6 @@ class GameBoard {
 
   placeShipVertically(coordinates, length) {
     const warShip = new Ship(length);
-    this.totalShipLength += length;
 
     let start = coordinates[1];
     const end = coordinates[0];
@@ -119,6 +117,7 @@ function placeShipHorizontally(target, coordinates, length) {
     times++;
     end++;
   }
+  this.totalShipLength += length;
 }
 
 //  PlaceShipVertically Utility functions
@@ -146,6 +145,8 @@ function placeShipVertically(coordinates, length) {
     start++;
     times++;
   }
+
+  this.totalShipLength += length;
 }
 
 // Receive Attack Utility functions

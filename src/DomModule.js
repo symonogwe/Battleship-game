@@ -1,3 +1,4 @@
+import { mainGameLoop } from "./GameLoop";
 import screenController from "./ScreenController";
 
 // Get player1 name
