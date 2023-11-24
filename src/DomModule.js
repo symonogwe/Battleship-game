@@ -59,23 +59,34 @@ function setAdjacentHorizontalShips(length) {
   const allCellDivs = document.querySelectorAll(".cell-div");
 
   if (validHorizontalTarget.length === length) {
+    const validElements = [];
+
     allCellDivs.forEach((item) => {
       let target = [+item.dataset.x, +item.dataset.y];
 
-      for (let i = 0; i < validHorizontalTarget.length; i++) {
-        if (
-          JSON.stringify(validHorizontalTarget[i]) === JSON.stringify(target)
-        ) {
-          item.style.backgroundColor = "green";
-        }
-      }
+      const element = validHorizontalTarget.find((arr) => {
+        return JSON.stringify(arr) === JSON.stringify(target);
+      });
 
-      if (JSON.stringify(validHorizontalTarget[0]) === JSON.stringify(target)) {
-        item.addEventListener("click", () => {
-          placeHorizontally(target, 5);
-        });
-      }
+      if (element) validElements.push(item);
     });
+
+    const everyValidElement = validElements.every(
+      (item) => item.innerHTML === ""
+    );
+
+    if (everyValidElement) {
+      validElements.forEach((item) => {
+        item.style.backgroundColor = "green";
+      });
+
+      const target = validElements[0];
+      const clickTarget = [+target.dataset.x, +target.dataset.y];
+
+      validElements[0].addEventListener("click", () => {
+        placeHorizontally(clickTarget, length);
+      });
+    }
   }
 }
 
