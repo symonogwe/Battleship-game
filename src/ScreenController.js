@@ -46,8 +46,7 @@ class ScreenController {
         cellDiv.dataset.y = j;
 
         if (typeof cell === "object") {
-          // cellDiv.style.backgroundColor = "orange";
-          // cellDiv.textContent = "SHIP";
+          cellDiv.style.cursor = "not-allowed";
 
           const warShip = document.createElement("img");
           warShip.src = shipImg;
