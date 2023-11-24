@@ -77,7 +77,7 @@ function setAdjacentHorizontalShips(length) {
 
     if (everyValidElement) {
       validElements.forEach((item) => {
-        item.style.backgroundColor = "green";
+        item.style.backgroundColor = "orange";
       });
 
       const target = validElements[0];
