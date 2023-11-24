@@ -53,8 +53,10 @@ class GameBoard {
     return this.gameBoard;
   }
 
-  placeShipVertically(coordinates, length) {
-    const warShip = new Ship(length);
+  placeShipVertically(coordinates) {
+    let shipSize = this.shipSizes.shift();
+
+    const warShip = new Ship(shipSize);
 
     let start = coordinates[1];
     const end = coordinates[0];
@@ -62,7 +64,8 @@ class GameBoard {
     const totalColumnItems = 10;
     const selectedColumnItems = totalColumnItems - start;
 
-    if (selectedColumnItems < length) {
+    if (selectedColumnItems < shipSize) {
+      this.shipSizes.unshift(shipSize);
       return "Invalid move";
     }
 
@@ -70,12 +73,15 @@ class GameBoard {
     const shipExists = checkIfShipExistsVertical.call(
       this,
       coordinates,
-      length
+      shipSize
     );
-    if (shipExists) return shipExists;
+    if (shipExists) {
+      this.shipSizes.unshift(shipSize);
+      return shipExists;
+    }
 
     // places ship vertically
-    placeShipVertically.call(this, coordinates, length);
+    placeShipVertically.call(this, coordinates, shipSize);
 
     return this.gameBoard;
   }
