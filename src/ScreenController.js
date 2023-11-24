@@ -56,8 +56,10 @@ class ScreenController {
           cellDiv.appendChild(warShip);
         }
 
+        let currentSize = this.mainGame.player1.board.shipSizes[0];
+
         cellDiv.addEventListener("mouseover", () => {
-          mouseOverPlaceHorizontally(cellDiv, 5);
+          mouseOverPlaceHorizontally(cellDiv, currentSize);
         });
 
         cellDiv.addEventListener("mouseout", () => {

@@ -17,10 +17,13 @@ class GameBoard {
   constructor() {
     this.totalShipLength = 0;
     this.gameBoard = this.#createGameBoard();
+    this.shipSizes = [5, 4, 3, 3, 2];
   }
 
-  placeShipHorizontally(coordinates, length) {
-    const warShip = new Ship(length);
+  placeShipHorizontally(coordinates) {
+    let shipSize = this.shipSizes.shift();
+
+    const warShip = new Ship(shipSize);
 
     const start = coordinates[0];
     let end = coordinates[1];
@@ -28,7 +31,7 @@ class GameBoard {
     const targetRow = this.gameBoard[start];
     const targetStartIndex = targetRow.slice(end);
 
-    if (length > targetStartIndex.length) {
+    if (shipSize > targetStartIndex.length) {
       return "Invalid Move";
     }
     // check if ship exists in position
@@ -36,12 +39,12 @@ class GameBoard {
       this,
       targetRow,
       coordinates,
-      length
+      shipSize
     );
     if (shipExists) return shipExists;
 
     // place ship horizontally
-    placeShipHorizontally.call(this, targetRow, coordinates, length);
+    placeShipHorizontally.call(this, targetRow, coordinates, shipSize);
 
     return this.gameBoard;
   }
