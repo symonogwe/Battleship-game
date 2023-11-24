@@ -32,6 +32,7 @@ class GameBoard {
     const targetStartIndex = targetRow.slice(end);
 
     if (shipSize > targetStartIndex.length) {
+      this.shipSizes.unshift(shipSize);
       return "Invalid Move";
     }
     // check if ship exists in position
@@ -41,7 +42,10 @@ class GameBoard {
       coordinates,
       shipSize
     );
-    if (shipExists) return shipExists;
+    if (shipExists) {
+      this.shipSizes.unshift(shipSize);
+      return shipExists;
+    }
 
     // place ship horizontally
     placeShipHorizontally.call(this, targetRow, coordinates, shipSize);
