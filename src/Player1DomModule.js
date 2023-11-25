@@ -1,6 +1,7 @@
 import { mainGameLoop } from "./GameLoop";
 import screenController from "./ScreenController";
 
+// PLAYER1 UTILITIES
 // Get player1 name
 function getPlayer1Name() {
   const form = document.querySelector(".player1-name-input");
@@ -10,6 +11,12 @@ function getPlayer1Name() {
   return input.value;
 }
 
+const player1Btn = document.querySelector(".player1-btn");
+player1Btn.addEventListener("click", () => {
+  screenController.initializePlayer1();
+});
+
+// DOM INTERACTION UTILITIES
 function clearFormInput() {
   const form = document.querySelector(".player1-name-input");
   const input = document.querySelector("#player1-name");
@@ -18,7 +25,6 @@ function clearFormInput() {
   hideElement(form);
 }
 
-// Clear form & input
 function clearInput(form) {
   form.reset();
 }
@@ -27,12 +33,44 @@ function hideElement(element) {
   element.style.display = "none";
 }
 
-// Player1 Name submit button
-const player1Btn = document.querySelector(".player1-btn");
-player1Btn.addEventListener("click", () => {
-  screenController.initializePlayer1();
-});
+function deleteAllChildren(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
 
+function revealElement(element) {
+  element.style.display = "block";
+}
+
+// MOUSE OVER  CELL UTILITIES
+const allHovers = ["horizontal", "vertical"];
+let currentHover = allHovers[0];
+
+// change currentHover
+function changeCurrentHover() {
+  if (currentHover === allHovers[0]) {
+    currentHover = allHovers[1];
+  } else if (currentHover === allHovers[1]) {
+    currentHover = allHovers[0];
+  }
+}
+
+const rotateShipBtn = document.querySelector(".rotate-ship");
+rotateShipBtn.addEventListener("click", changeCurrentHover);
+
+function applyMouseOver(cell, length) {
+  if (currentHover === "horizontal") {
+    mouseOverPlaceHorizontally(cell, length);
+  } else if (currentHover === "vertical") {
+    mouseOverPlaceVertically(cell, length);
+  }
+}
+
+function applyMouseOut(cell) {
+  if (currentHover === "horizontal") mouseOutPlaceHorizontally(cell);
+  if (currentHover === "vertical") mouseOutPlaceVertically(cell);
+}
 //MouseOver PlaceHorizontally function
 let validHorizontalTarget;
 
@@ -211,25 +249,11 @@ function mouseOutPlaceVertically(cell) {
   validVerticalTarget = [];
 }
 
-// Delete allChildren of element
-function deleteAllChildren(element) {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild);
-  }
-}
-
-// RevealElement function
-function revealElement(element) {
-  element.style.display = "block";
-}
-
 export {
   getPlayer1Name,
   clearFormInput,
-  mouseOverPlaceHorizontally,
-  mouseOutPlaceHorizontally,
-  mouseOverPlaceVertically,
-  mouseOutPlaceVertically,
+  applyMouseOver,
+  applyMouseOut,
   deleteAllChildren,
   revealElement,
 };

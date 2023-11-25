@@ -4,10 +4,8 @@ import Player from "./Player";
 import {
   getPlayer1Name,
   clearFormInput,
-  mouseOverPlaceHorizontally,
-  mouseOutPlaceHorizontally,
-  mouseOverPlaceVertically,
-  mouseOutPlaceVertically,
+  applyMouseOver,
+  applyMouseOut,
   deleteAllChildren,
   revealElement,
 } from "./Player1DomModule";
@@ -64,20 +62,12 @@ class ScreenController {
         let currentSize = this.mainGame.player1.board.shipSizes[0];
 
         cellDiv.addEventListener("mouseover", () => {
-          mouseOverPlaceVertically(cellDiv, currentSize);
+          applyMouseOver(cellDiv, currentSize);
         });
 
         cellDiv.addEventListener("mouseout", () => {
-          mouseOutPlaceVertically(cellDiv);
+          applyMouseOut(cellDiv);
         });
-
-        // cellDiv.addEventListener("mouseover", () => {
-        //   mouseOverPlaceHorizontally(cellDiv, currentSize);
-        // });
-
-        // cellDiv.addEventListener("mouseout", () => {
-        //   mouseOutPlaceHorizontally(cellDiv);
-        // });
 
         placingBoard.appendChild(cellDiv);
       }
