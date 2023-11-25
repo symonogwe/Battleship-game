@@ -184,8 +184,8 @@ test("GameBoards should be able to place ships at specific coordinates verticall
 
   gameBoard2.placeShipVertically = jest.fn((coordinate, length) => {
     const ship2 = new Ship(length);
-    let start = coordinate[1];
-    const end = coordinate[0];
+    let start = coordinate[0];
+    const end = coordinate[1];
 
     let times = 0;
     while (times < length) {
@@ -197,7 +197,7 @@ test("GameBoards should be able to place ships at specific coordinates verticall
     return gameBoard2.gameBoard;
   });
 
-  gameBoard2.placeShipVertically([9, 2], 3);
+  gameBoard2.placeShipVertically([2, 9], 3);
   expect(gameBoard2.placeShipVertically.mock.results[0].value).toEqual(
     targetVerticalBoard.gameBoard
   );
