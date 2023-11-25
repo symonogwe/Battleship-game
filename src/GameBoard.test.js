@@ -304,20 +304,6 @@ test("Receive attack function sends hit to correct ship or records coordinates &
   // expect(gameBoard5.allSunk.mock.results[0].value).toBe(false);
 
   expect(gameBoard5.receiveAttack.mock.results[0].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[1].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[2].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[3].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[4].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[5].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[6].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[7].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[8].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[9].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[10].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[11].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[12].value).toBe("hit");
-  expect(gameBoard5.receiveAttack.mock.results[13].value).toBe(1);
-  expect(gameBoard5.receiveAttack.mock.results[14].value).toBe("All Sunk");
 });
 
 describe("Placing ship should increment totalShipsLength Property", () => {

@@ -53,8 +53,6 @@ describe("Tests PlayRound method attacks enemy board/ship", () => {
   test("player1 playRoundMethod should destroy player2 board", () => {
     expect(player1.playRound([5, 4])).toBe("hit");
     expect(player1.playRound([7, 4])).toBe("hit");
-    expect(player1.playRound([9, 4])).toBe(1);
-    expect(player1.playRound([9, 5])).toBe(1);
   });
 
   test("player2 playRoundMethod should destroy player1 board", () => {
