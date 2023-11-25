@@ -9,6 +9,7 @@ import {
   mouseOverPlaceVertically,
   mouseOutPlaceVertically,
   deleteAllChildren,
+  revealElement,
 } from "./Player1DomModule";
 
 import shipImg from "./Assets/ship.svg";
@@ -31,6 +32,9 @@ class ScreenController {
   }
 
   renderStartingPlayer1Board() {
+    const rotateShipBtn = document.querySelector(".rotate-ship");
+    revealElement(rotateShipBtn);
+
     const placingBoard = document.querySelector(".player-1-empty-board");
     deleteAllChildren(placingBoard);
     const board = this.mainGame.player1.board.gameBoard;

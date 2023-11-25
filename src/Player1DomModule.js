@@ -218,6 +218,11 @@ function deleteAllChildren(element) {
   }
 }
 
+// RevealElement function
+function revealElement(element) {
+  element.style.display = "block";
+}
+
 export {
   getPlayer1Name,
   clearFormInput,
@@ -226,4 +231,5 @@ export {
   mouseOverPlaceVertically,
   mouseOutPlaceVertically,
   deleteAllChildren,
+  revealElement,
 };
