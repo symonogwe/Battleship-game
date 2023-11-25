@@ -135,9 +135,9 @@ function placeShipHorizontally(target, coordinates, length) {
 
 //  PlaceShipVertically Utility functions
 function checkIfShipExistsVertical(coordinates, length) {
-  const end = coordinates[0];
+  const end = coordinates[1];
   let times = 0;
-  let shipStart = coordinates[1];
+  let shipStart = coordinates[0];
 
   while (times < length) {
     let position = this.gameBoard[shipStart][end];
@@ -150,8 +150,8 @@ function checkIfShipExistsVertical(coordinates, length) {
 function placeShipVertically(coordinates, length) {
   const warShip = new Ship(length);
   let times = 0;
-  let start = coordinates[1];
-  const end = coordinates[0];
+  let start = coordinates[0];
+  const end = coordinates[1];
 
   while (times < length) {
     this.gameBoard[start][end] = warShip;
