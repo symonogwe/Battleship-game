@@ -58,8 +58,8 @@ class GameBoard {
 
     const warShip = new Ship(shipSize);
 
-    let start = coordinates[1];
-    const end = coordinates[0];
+    let start = coordinates[0];
+    const end = coordinates[1];
 
     const totalColumnItems = 10;
     const selectedColumnItems = totalColumnItems - start;
