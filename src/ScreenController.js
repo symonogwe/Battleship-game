@@ -9,7 +9,7 @@ import {
   mouseOverPlaceVertically,
   mouseOutPlaceVertically,
   deleteAllChildren,
-} from "./DomModule";
+} from "./Player1DomModule";
 
 import shipImg from "./Assets/ship.svg";
 
