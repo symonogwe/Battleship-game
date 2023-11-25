@@ -47,8 +47,8 @@ describe("Tests PlayRound method attacks enemy board/ship", () => {
   player1.board.placeShipHorizontally([1, 1], 3);
   player1.board.placeShipHorizontally([3, 4], 5);
 
-  player2.board.placeShipVertically([4, 5], 4);
-  player2.board.placeShipVertically([9, 5], 2);
+  player2.board.placeShipVertically([5, 4], 4);
+  player2.board.placeShipVertically([5, 9], 2);
 
   test("player1 playRoundMethod should destroy player2 board", () => {
     expect(player1.playRound([5, 4])).toBe("hit");

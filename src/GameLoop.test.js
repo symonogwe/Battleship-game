@@ -63,7 +63,7 @@ describe("Manually call each player's playRound method", () => {
     gameLoop2.setEnemies();
 
     gameLoop2.player2.board.placeShipHorizontally([3, 4], 5);
-    gameLoop2.player2.board.placeShipVertically([9, 5], 2);
+    gameLoop2.player2.board.placeShipVertically([5, 9], 2);
 
     expect(gameLoop2.player1.playRound([5, 9])).toBe("hit");
     expect(gameLoop2.player1.playRound([6, 9])).toBe("hit");
