@@ -87,9 +87,6 @@ body {
 /* PLACE PLAYER1 SHIPS STYLES */
 .place-player-1-ships {
   border: 1px solid red;
-  display: grid;
-  grid-template-columns: 2fr 1.5fr;
-  align-items: center;
   padding: var(--base-padding);
 }
 
@@ -113,4 +110,19 @@ body {
 
 .war-ship-img {
   width: max(25px, 25%);
+}
+
+.rotate-ship {
+  background-color: orange;
+  border: none;
+  color: var(--text-color);
+  padding: 0.4em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  display: none;
+}
+
+.rotate-ship:hover {
+  scale: 0.97;
+  transition: 0.3s;
 }
