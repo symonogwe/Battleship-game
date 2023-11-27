@@ -33,7 +33,19 @@ class ScreenController {
     const rotateShipBtn = document.querySelector(".rotate-ship");
     revealElement(rotateShipBtn);
 
+    const playGameBtn = document.querySelector(".play-game-btn");
+
     const placingBoard = document.querySelector(".player-1-empty-board");
+    const currentSize = this.mainGame.player1.board.shipSizes[0];
+    const totalShipSize = this.mainGame.player1.board.totalShipLength;
+
+    if (totalShipSize === 17) {
+      revealElement(playGameBtn);
+      placingBoard.style.cursor = "not-allowed";
+      rotateShipBtn.style.cursor = "not-allowed";
+      console.log(totalShipSize);
+    }
+
     deleteAllChildren(placingBoard);
     const board = this.mainGame.player1.board.gameBoard;
 
@@ -58,8 +70,6 @@ class ScreenController {
 
           cellDiv.appendChild(warShip);
         }
-
-        let currentSize = this.mainGame.player1.board.shipSizes[0];
 
         cellDiv.addEventListener("mouseover", () => {
           applyMouseOver(cellDiv, currentSize);

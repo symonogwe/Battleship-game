@@ -112,6 +112,10 @@ body {
   width: max(25px, 25%);
 }
 
+.player1-btns {
+  border: 1px solid blue;
+}
+
 .rotate-ship {
   background-color: orange;
   border: none;
@@ -123,6 +127,21 @@ body {
 }
 
 .rotate-ship:hover {
+  scale: 0.97;
+  transition: 0.3s;
+}
+
+.play-game-btn {
+  background-color: var(--base-color);
+  border: none;
+  color: var(--text-color);
+  padding: 0.4em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  display: none;
+}
+
+.play-game-btn:hover {
   scale: 0.97;
   transition: 0.3s;
 }
