@@ -157,3 +157,41 @@ body {
   scale: 0.97;
   transition: 0.3s;
 }
+
+/* GAME CONTAINER STYLES */
+.game-container {
+  border: 1px solid red;
+  display: grid;
+  justify-items: center;
+}
+
+.board-container {
+  border: 1px solid blue;
+  width: 100%;
+  padding: var(--base-padding);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.player-1-board,
+.player-2-board {
+  width: 35vmax;
+  height: 35vmax;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 0.1fr);
+  gap: 1px;
+}
+
+.game-cell {
+  background-color: var(--base-color);
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.skeleton-img {
+  width: max(25px, 25%);
+}
