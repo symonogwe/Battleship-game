@@ -10,6 +10,8 @@ import {
   revealElement,
 } from "./Player1DomModule";
 
+import { renderPlayer1GameBoard, renderPlayer2GameBoard } from "./PlayGame";
+
 import shipImg from "./Assets/ship.svg";
 
 class ScreenController {
@@ -88,6 +90,14 @@ class ScreenController {
         placingBoard.appendChild(cellDiv);
       }
     }
+  }
+
+  renderBothGameBoards() {
+    const player1BoardDiv = document.querySelector(".player-1-board");
+    const player2BoardDiv = document.querySelector(".player-2-board");
+
+    renderPlayer1GameBoard(player1BoardDiv);
+    renderPlayer2GameBoard(player2BoardDiv);
   }
 }
 
