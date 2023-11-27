@@ -26,7 +26,8 @@ const computerAi = new Player("Computer");
 computerAi.validPlayRoundMoves = validCoordinatePlays;
 
 computerAi.playRound = function () {
-  const randomPosition = Math.floor(Math.random() * 100);
+  const times = this.validPlayRoundMoves.length;
+  const randomPosition = Math.floor(Math.random() * times);
   const randomCoordinate = this.validPlayRoundMoves.splice(
     randomPosition,
     1
