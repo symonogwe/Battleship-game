@@ -43,6 +43,22 @@ function revealElement(element) {
   element.style.display = "block";
 }
 
+// Player2 PlaceShip coordinates
+const player2PlaceHorizontally = [
+  [9, 1],
+  [1, 5],
+  [0, 6],
+  [0, 0],
+  [2, 1],
+];
+const player2PlaceVertically = [
+  [3, 2],
+  [0, 9],
+  [4, 8],
+  [3, 3],
+  [8, 8],
+];
+
 // MOUSE OVER  CELL UTILITIES
 const allHovers = ["horizontal", "vertical"];
 let currentHover = allHovers[0];
@@ -134,7 +150,12 @@ function placeHorizontally(coordinates, length) {
     coordinates,
     length
   );
+  screenController.mainGame.player2.board.placeShipHorizontally(
+    player2PlaceHorizontally.shift(),
+    length
+  );
   screenController.renderStartingPlayer1Board();
+  console.log(screenController.mainGame);
   validHorizontalTarget = [];
 }
 
@@ -224,7 +245,12 @@ function placeVertically(coordinates, length) {
     coordinates,
     length
   );
+  screenController.mainGame.player2.board.placeShipVertically(
+    player2PlaceVertically.shift(),
+    length
+  );
   screenController.renderStartingPlayer1Board();
+  console.log(screenController.mainGame);
   validVerticalTarget = [];
 }
 // MouseOut player1 placeVertically function
@@ -248,6 +274,9 @@ function mouseOutPlaceVertically(cell) {
 
   validVerticalTarget = [];
 }
+
+// console.log(screenController.mainGame.player1.board);
+// console.log(screenController.mainGame.player2.board);
 
 export {
   getPlayer1Name,
