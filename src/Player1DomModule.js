@@ -43,6 +43,10 @@ function revealElement(element) {
   element.style.display = "block";
 }
 
+function clearText(element) {
+  element.textContent = "";
+}
+
 // Player2 PlaceShip coordinates
 const player2PlaceHorizontally = [
   [9, 1],
@@ -290,4 +294,5 @@ export {
   applyMouseOut,
   deleteAllChildren,
   revealElement,
+  clearText,
 };
