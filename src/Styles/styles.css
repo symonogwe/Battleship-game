@@ -88,11 +88,20 @@ body {
 .place-player-1-ships {
   border: 1px solid red;
   padding: var(--base-padding);
+  display: grid;
+  justify-items: center;
+}
+
+.player1-name-h3 {
+  font-size: var(--base-h3-fs);
+  font-family: var(--base-h2-ff);
+  color: orange;
+  display: none;
 }
 
 .player-1-empty-board {
-  width: 30vw;
-  height: 40dvh;
+  width: 50vmin;
+  height: 50vmin;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 0.1fr);
@@ -113,13 +122,16 @@ body {
 }
 
 .player1-btns {
-  border: 1px solid blue;
+  width: 22%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: var(--base-padding);
 }
 
 .rotate-ship {
   background-color: orange;
   border: none;
-  color: var(--text-color);
+  color: var(--sub-color);
   padding: 0.4em 1em;
   border-radius: 0.5em;
   cursor: pointer;

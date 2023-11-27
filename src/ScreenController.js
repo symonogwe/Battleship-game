@@ -35,6 +35,11 @@ class ScreenController {
 
     const playGameBtn = document.querySelector(".play-game-btn");
 
+    const player1InputName = this.mainGame.player1.name;
+    const player1NameH3 = document.querySelector(".player1-name-h3");
+    player1NameH3.textContent = `Place Your Ships ${player1InputName}`;
+    revealElement(player1NameH3);
+
     const placingBoard = document.querySelector(".player-1-empty-board");
     const currentSize = this.mainGame.player1.board.shipSizes[0];
     const totalShipSize = this.mainGame.player1.board.totalShipLength;
