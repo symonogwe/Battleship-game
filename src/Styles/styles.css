@@ -165,6 +165,13 @@ body {
   justify-items: center;
 }
 
+.game-play-results {
+  font-size: var(--base-h3-fs);
+  font-family: var(--base-h2-ff);
+  color: orange;
+  /* display: none; */
+}
+
 .board-container {
   border: 1px solid blue;
   width: 100%;
