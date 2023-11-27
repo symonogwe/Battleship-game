@@ -1,8 +1,11 @@
 import screenController from "./ScreenController";
 import skeletonImg from "./Assets/skeleton.svg";
+import shipImg from "./Assets/ship.svg";
 
 // RENDER PLAYER GAME-BOARDS FUNCTIONALITY
 function renderPlayer1GameBoard(targetDiv) {
+  targetDiv.style.cursor = "not-allowed";
+
   const player1Board = screenController.mainGame.player1.board.gameBoard;
 
   for (let i = 0; i < player1Board.length; i++) {
@@ -17,6 +20,14 @@ function renderPlayer1GameBoard(targetDiv) {
       gameCell.dataset.x = i;
       gameCell.dataset.y = j;
 
+      if (typeof cell === "object") {
+        const warShip = document.createElement("img");
+        warShip.src = shipImg;
+        warShip.classList.add("war-ship-img");
+
+        gameCell.appendChild(warShip);
+      }
+
       if (cell === "hit") {
         const skeleton = document.createElement("img");
         skeleton.src = skeletonImg;
@@ -24,6 +35,7 @@ function renderPlayer1GameBoard(targetDiv) {
 
         gameCell.appendChild(skeleton);
       }
+
       targetDiv.appendChild(gameCell);
     }
   }
@@ -40,6 +52,8 @@ function renderPlayer2GameBoard(targetDiv) {
 
       const gameCell = document.createElement("div");
       gameCell.classList.add("game-cell");
+
+      gameCell.style.cursor = "crosshair";
 
       gameCell.dataset.x = i;
       gameCell.dataset.y = j;
