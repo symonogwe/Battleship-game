@@ -48,7 +48,8 @@ class ScreenController {
       revealElement(playGameBtn);
       placingBoard.style.cursor = "not-allowed";
       rotateShipBtn.style.cursor = "not-allowed";
-      console.log(totalShipSize);
+      player1NameH3.textContent = "";
+      player1NameH3.textContent = `Play The Game`;
     }
 
     deleteAllChildren(placingBoard);
