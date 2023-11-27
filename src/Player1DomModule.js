@@ -275,8 +275,13 @@ function mouseOutPlaceVertically(cell) {
   validVerticalTarget = [];
 }
 
-// console.log(screenController.mainGame.player1.board);
-// console.log(screenController.mainGame.player2.board);
+//PLAY GAME BUTTON FUNCTIONALITY
+const playGameBtn = document.querySelector(".play-game-btn");
+playGameBtn.addEventListener("click", () => {
+  const targetDiv = document.querySelector(".place-player-1-ships");
+  hideElement(targetDiv);
+  screenController.renderBothGameBoards();
+});
 
 export {
   getPlayer1Name,
