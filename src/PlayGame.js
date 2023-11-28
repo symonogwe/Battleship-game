@@ -1,7 +1,11 @@
 import screenController from "./ScreenController";
 import skeletonImg from "./Assets/skeleton.svg";
 import shipImg from "./Assets/ship.svg";
-import { clearText, deleteAllChildren } from "./Player1DomModule";
+import {
+  clearText,
+  deleteAllChildren,
+  revealElement,
+} from "./Player1DomModule";
 
 // RENDER PLAYER GAME-BOARDS FUNCTIONALITY
 function renderPlayer1GameBoard(targetDiv) {
@@ -93,6 +97,19 @@ function attackComputer(targetDiv) {
 
   const message = screenController.mainGame.currentPlayerTurn(coordinates);
   const gamePlayResults = document.querySelector(".game-play-results");
+
+  if (
+    message ===
+    `${screenController.mainGame.player1.name} sunk all of ${screenController.mainGame.player2.name}'s ships`
+  ) {
+    clearText(gamePlayResults);
+    gamePlayResults.textContent = message;
+    player2BoardResults();
+    screenController.gameOver();
+
+    return;
+  }
+
   clearText(gamePlayResults);
 
   gamePlayResults.textContent = message;
@@ -107,6 +124,17 @@ function attackPlayer1() {
   clearText(gamePlayResults);
 
   const message = screenController.mainGame.currentPlayerTurn();
+
+  if (
+    message ===
+    `${screenController.mainGame.player2.name} sunk all of ${screenController.mainGame.player2.name}'s ships`
+  ) {
+    gamePlayResults.textContent = message;
+    screenController.renderBothGameBoards();
+    screenController.gameOver();
+    return;
+  }
+
   gamePlayResults.textContent = message;
 
   screenController.renderBothGameBoards();
@@ -149,4 +177,25 @@ function player2BoardResults() {
   }
 }
 
-export { renderPlayer1GameBoard, renderPlayer2GameBoard };
+// GAME OVER FUNCTIONALITY
+function disablePlayer2Board() {
+  const player2BoardDiv = document.querySelector(".player-2-board");
+  player2BoardDiv.style.cursor = "none";
+}
+
+function revealPlayAgainBtn() {
+  const playAgainBtn = document.querySelector(".play-again-btn");
+  playAgainBtn.addEventListener("click", reloadGame);
+  revealElement(playAgainBtn);
+}
+
+function reloadGame() {
+  location.reload();
+}
+
+export {
+  renderPlayer1GameBoard,
+  renderPlayer2GameBoard,
+  disablePlayer2Board,
+  revealPlayAgainBtn,
+};

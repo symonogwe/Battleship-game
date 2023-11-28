@@ -10,7 +10,12 @@ import {
   revealElement,
 } from "./Player1DomModule";
 
-import { renderPlayer1GameBoard, renderPlayer2GameBoard } from "./PlayGame";
+import {
+  disablePlayer2Board,
+  renderPlayer1GameBoard,
+  renderPlayer2GameBoard,
+  revealPlayAgainBtn,
+} from "./PlayGame";
 
 import shipImg from "./Assets/ship.svg";
 
@@ -98,6 +103,11 @@ class ScreenController {
 
     renderPlayer1GameBoard(player1BoardDiv);
     renderPlayer2GameBoard(player2BoardDiv);
+  }
+
+  gameOver() {
+    disablePlayer2Board();
+    revealPlayAgainBtn();
   }
 }
 
