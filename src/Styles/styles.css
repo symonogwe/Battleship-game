@@ -206,3 +206,19 @@ body {
   filter: invert(99%) sepia(99%) saturate(0%) hue-rotate(310deg)
     brightness(110%) contrast(100%);
 }
+
+.play-again-btn {
+  background-color: orange;
+  border: none;
+  color: var(--sub-color);
+  padding: 0.4em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  margin-top: 2.5em;
+  display: none;
+}
+
+.play-again-btn:hover {
+  scale: 1.1;
+  transition: 0.3s;
+}
