@@ -159,7 +159,6 @@ function placeHorizontally(coordinates, length) {
     length
   );
   screenController.renderStartingPlayer1Board();
-  console.log(screenController.mainGame);
   validHorizontalTarget = [];
 }
 
@@ -221,13 +220,9 @@ function setAdjacentVerticalShips(length) {
       if (element) validElements.push(item);
     });
 
-    console.log(validElements);
-
     const everyValidElement = validElements.every(
       (item) => item.innerHTML === ""
     );
-
-    console.log(everyValidElement);
 
     if (everyValidElement) {
       validElements.forEach((item) => {
@@ -254,7 +249,6 @@ function placeVertically(coordinates, length) {
     length
   );
   screenController.renderStartingPlayer1Board();
-  console.log(screenController.mainGame);
   validVerticalTarget = [];
 }
 // MouseOut player1 placeVertically function
