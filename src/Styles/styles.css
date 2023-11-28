@@ -105,8 +105,6 @@ body {
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 0.1fr);
   gap: 1px;
-  padding-left: 1.5em;
-  position: relative;
 }
 
 .cell-div {
@@ -173,15 +171,13 @@ body {
   width: 100%;
   padding: var(--base-padding);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 20px;
   justify-items: center;
 }
 
 .player-1-board,
 .player-2-board {
-  width: 35vmax;
-  height: 35vmax;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-template-rows: repeat(10, 0.1fr);
@@ -193,6 +189,8 @@ body {
   display: grid;
   justify-items: center;
   align-items: center;
+  width: 40px;
+  height: 40px;
 }
 
 .skeleton-img {
@@ -215,4 +213,77 @@ body {
 .play-again-btn:hover {
   scale: 1.1;
   transition: 0.3s;
+}
+
+@media (max-width: 500px) {
+  .place-player-1-ships {
+    padding: var(--base-padding);
+    display: grid;
+    justify-items: center;
+  }
+
+  .player1-name-h3 {
+    font-size: var(--base-h3-fs);
+    font-family: var(--base-h2-ff);
+    color: orange;
+    display: none;
+  }
+
+  .player-1-empty-board {
+    width: 95vw;
+    height: 35vh;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 0.1fr);
+    gap: 1px;
+    position: relative;
+  }
+
+  .cell-div {
+    background-color: var(--base-color);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .war-ship-img {
+    width: max(20px, 25%);
+  }
+
+  .player1-btns {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: var(--base-padding);
+  }
+
+  .rotate-ship {
+    background-color: orange;
+    border: none;
+    color: var(--sub-color);
+    padding: 0.4em 0.8em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    display: none;
+  }
+
+  .rotate-ship:hover {
+    scale: 0.97;
+    transition: 0.3s;
+  }
+
+  .play-game-btn {
+    background-color: var(--base-color);
+    border: none;
+    color: var(--text-color);
+    padding: 0.4em 0.8em;
+    border-radius: 0.5em;
+    cursor: pointer;
+    display: none;
+  }
+
+  .play-game-btn:hover {
+    scale: 0.97;
+    transition: 0.3s;
+  }
 }
