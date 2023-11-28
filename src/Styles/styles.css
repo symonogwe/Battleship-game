@@ -203,4 +203,6 @@ body {
 
 .skeleton-img {
   width: max(25px, 25%);
+  filter: invert(99%) sepia(99%) saturate(0%) hue-rotate(310deg)
+    brightness(110%) contrast(100%);
 }
