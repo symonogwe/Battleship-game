@@ -278,6 +278,11 @@ const playGameBtn = document.querySelector(".play-game-btn");
 playGameBtn.addEventListener("click", () => {
   const targetDiv = document.querySelector(".place-player-1-ships");
   hideElement(targetDiv);
+
+  const gameContainer = document.querySelector(".game-container");
+  revealElement(gameContainer);
+  gameContainer.style.display = "grid";
+
   screenController.renderBothGameBoards();
 });
 
