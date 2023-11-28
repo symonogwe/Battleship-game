@@ -49,18 +49,18 @@ function clearText(element) {
 
 // Player2 PlaceShip coordinates
 const player2PlaceHorizontally = [
-  [9, 1],
-  [1, 5],
-  [0, 6],
-  [0, 0],
-  [2, 1],
+  [0, 1],
+  [1, 6],
+  [2, 3],
+  [6, 0],
+  [8, 2],
 ];
 const player2PlaceVertically = [
-  [3, 2],
-  [0, 9],
-  [4, 8],
-  [3, 3],
-  [8, 8],
+  [4, 4],
+  [3, 9],
+  [5, 6],
+  [6, 8],
+  [8, 9],
 ];
 
 // MOUSE OVER  CELL UTILITIES
