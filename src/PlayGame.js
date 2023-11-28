@@ -127,7 +127,7 @@ function attackPlayer1() {
 
   if (
     message ===
-    `${screenController.mainGame.player2.name} sunk all of ${screenController.mainGame.player2.name}'s ships`
+    `${screenController.mainGame.player2.name} sunk all of ${screenController.mainGame.player1.name}'s ships`
   ) {
     gamePlayResults.textContent = message;
     screenController.renderBothGameBoards();
