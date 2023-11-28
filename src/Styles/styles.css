@@ -32,6 +32,7 @@
 
 body {
   height: 100vh;
+  background-color: var(--sub-base-color);
 }
 
 /* PLAYER 1 INPUT STYLES */
@@ -86,7 +87,7 @@ body {
 
 /* PLACE PLAYER1 SHIPS STYLES */
 .place-player-1-ships {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   padding: var(--base-padding);
   display: grid;
   justify-items: center;
@@ -160,9 +161,10 @@ body {
 
 /* GAME CONTAINER STYLES */
 .game-container {
-  border: 1px solid red;
-  display: grid;
+  /* border: 1px solid red; */
+  /* display: grid; */
   justify-items: center;
+  display: none;
 }
 
 .game-play-results {
@@ -173,7 +175,7 @@ body {
 }
 
 .board-container {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 100%;
   padding: var(--base-padding);
   display: grid;
