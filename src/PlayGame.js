@@ -77,15 +77,19 @@ function renderPlayer2GameBoard(targetDiv) {
         skeleton.classList.add("skeleton-img");
 
         gameCell.appendChild(skeleton);
+        gameCell.style.cursor = "none";
       }
 
       if (cell === 1) {
         gameCell.style.backgroundColor = "orange";
+        gameCell.style.cursor = "none";
       }
 
-      gameCell.addEventListener("click", () => {
-        attackComputer(gameCell);
-      });
+      if (cell === 0 || typeof cell === "object") {
+        gameCell.addEventListener("click", () => {
+          attackComputer(gameCell);
+        });
+      }
 
       targetDiv.appendChild(gameCell);
     }
