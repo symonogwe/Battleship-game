@@ -20,7 +20,7 @@ Welcome to the Battleships Game repository! This project is a web-based implemen
 
   ## Testing
 - Unit tests are implemented using the Jest testing framework. To run the tests, follow these steps:
-npm install
-npm test
+- npm install
+- npm test
 
 
